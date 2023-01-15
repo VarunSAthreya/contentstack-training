@@ -51,3 +51,34 @@ nav {
     height: 20px;
     cursor: pointer;
 }
+
+.hero {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1;
+}
+
+.hero p {
+    color: #4b5563;
+}
+
+.hero h1,
+.hero p {
+    margin-bottom: 8px;
+}
+
+.hero-img {
+    margin-right: 20px;
+}
+
+.hero-img img {
+    height: 500px;
+}
