@@ -10,7 +10,7 @@ const themeSwitch = document.createElement("button");
 
 themeSwitch.innerText = "Light";
 
-let mode = "timer";
+let mode = "counter";
 
 function changeMode() {
     if (mode === "timer") {
@@ -23,6 +23,8 @@ function changeMode() {
         body.innerHTML = "";
         mode = "timer";
         modeSwitch.innerText = "Counter";
+
+        createTimer();
     }
 }
 

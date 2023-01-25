@@ -1,0 +1,45 @@
+.timerContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+}
+
+.timerDisplay {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Martian Mono', monospace;
+}
+
+.start, .reset, .pause {
+    padding: 10px 20px;
+    margin: 15px;
+    font-size: 1rem;
+    border-radius: 25%;
+    border: none;
+    color: white;
+}
+
+.start {
+    background-color: green;
+}
+
+.reset {
+    background-color: red;
+}
+
+.pause {
+    background-color: darkorange;
+}
+
+@media only screen and (max-width: 400px) {
+
+    .timerDisplay {
+        font-size: 1.5rem;
+    }
+
+    .start, .reset, .pause {
+        font-size: 0.8rem;
+    }
+}
