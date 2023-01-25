@@ -1,4 +1,4 @@
-# [DOM Manipulation: Counter and Timer]()
+# [DOM Manipulation: Counter and Timer](https://varunsathreya.github.io/contentstack-training/3.%20Javascript/2.%20Dom%20Manipulation/index.html)
 
 ## Problem Statement
 
