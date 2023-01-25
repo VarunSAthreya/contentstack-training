@@ -1,15 +1,18 @@
 function createTimer() {
     const timerContainer = document.createElement("div");
+    const timerHeader = document.createElement("h1");
     const timerDisplay = document.createElement("div");
     const buttons = document.createElement("div");
     const start = document.createElement("button");
     const reset = document.createElement("button");
 
     timerContainer.className = "timerContainer";
+    timerHeader.className = "timerHeader";
     timerDisplay.classList = "timerDisplay";
     start.className = "start";
     reset.className = "reset";
 
+    timerHeader.innerText = "Timer";
     timerDisplay.innerText = "00 : 00 : 00 : 000";
     start.innerText = "Start";
     reset.innerText = "Reset";
@@ -71,6 +74,7 @@ function createTimer() {
     buttons.appendChild(start);
     buttons.appendChild(reset);
 
+    timerContainer.appendChild(timerHeader);
     timerContainer.appendChild(timerDisplay);
     timerContainer.appendChild(buttons);
 

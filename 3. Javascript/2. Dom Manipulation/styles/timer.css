@@ -6,6 +6,11 @@
     margin-top: 20%;
 }
 
+.timerHeader {
+    margin-bottom: 0.8rem;
+    font-size: 3rem;
+}
+
 .timerDisplay {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -34,6 +39,10 @@
 }
 
 @media only screen and (max-width: 400px) {
+
+    .timerHeader {
+        font-size: 2rem;
+    }
 
     .timerDisplay {
         font-size: 1.5rem;
