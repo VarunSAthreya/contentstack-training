@@ -21,3 +21,8 @@
     border-radius: 25%;
     border: none;
 }
+
+.dark-theme {
+    background-color: black;
+    color: white;
+}

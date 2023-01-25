@@ -8,8 +8,6 @@ nav.className = "nav";
 const modeSwitch = document.createElement("button");
 const themeSwitch = document.createElement("button");
 
-themeSwitch.innerText = "Light";
-
 let mode = "counter";
 
 function changeMode() {
@@ -29,6 +27,18 @@ function changeMode() {
 }
 
 modeSwitch.onclick = changeMode;
+
+themeSwitch.innerText = "Dark";
+
+themeSwitch.onclick = function () {
+    if (themeSwitch.innerText === "Dark") {
+        themeSwitch.innerText = "Light";
+        document.body.className = "dark-theme";
+    } else {
+        themeSwitch.innerText = "Dark";
+        document.body.className = "";
+    }
+};
 
 nav.append(modeSwitch);
 nav.append(themeSwitch);

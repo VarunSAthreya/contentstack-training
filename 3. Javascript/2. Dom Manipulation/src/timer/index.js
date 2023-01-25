@@ -32,6 +32,8 @@ function createTimer() {
                 }
             }
         }
+
+        // Formatting `0` for cohesive look
         let h = hr < 10 ? "0" + hr : hr;
         let m = min < 10 ? "0" + min : min;
         let s = sec < 10 ? "0" + sec : sec;
@@ -62,7 +64,7 @@ function createTimer() {
 
         clearInterval(init);
 
-        [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0];
+        [ms, sec, min, hr] = [0, 0, 0, 0];
         timerDisplay.innerHTML = "00 : 00 : 00 : 000 ";
     };
 
