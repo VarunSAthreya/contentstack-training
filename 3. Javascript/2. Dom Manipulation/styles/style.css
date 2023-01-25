@@ -6,3 +6,18 @@
     box-sizing: border-box;
     font-family: 'Montserrat', 'Poppins', 'Helvetica';
 }
+
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.nav button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 1rem;
+    border-radius: 25%;
+    border: none;
+}

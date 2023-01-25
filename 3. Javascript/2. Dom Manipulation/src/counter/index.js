@@ -53,7 +53,6 @@ function createCounter() {
     counterContainer.appendChild(countValue);
     counterContainer.appendChild(buttons);
 
-    // Append the container to body
-    const root = document.getElementById("root");
-    root.appendChild(counterContainer);
+    // Append the container to root->body
+    body.appendChild(counterContainer);
 }
