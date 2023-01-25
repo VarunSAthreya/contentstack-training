@@ -6,7 +6,7 @@
     height: 100vh;
 }
 
-#increment, #decrement {
+.increment, .decrement {
     padding: 5px;
     margin: 5px;
     width: 2rem;
