@@ -1,18 +1,27 @@
 .counterContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     margin-top: 20%;
-    height: 30vh;
+}
+
+.counterHeading {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.countValue {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-family: 'Martian Mono', monospace;
 }
 
 .increment, .decrement {
-    padding: 5px;
-    margin: 5px;
-    width: 2rem;
-    font-size: 1rem;
-    border-radius: 50%;
+    padding: 0.3rem 1.3rem;
+    margin: 2rem;
+    font-size: 2.5rem;
+    border-radius: 25%;
     border: none;
     color: white
 }
@@ -23,4 +32,12 @@
 
 .decrement {
     background-color: red;
+}
+
+
+@media only screen and (max-width: 400px) {
+
+    .counterHeading, .countValue {
+        font-size: 2rem;
+    }
 }

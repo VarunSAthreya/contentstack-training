@@ -8,7 +8,7 @@ nav.className = "nav";
 const modeSwitch = document.createElement("button");
 const themeSwitch = document.createElement("button");
 
-let mode = "counter";
+let mode = "timer";
 
 function changeMode() {
     if (mode === "timer") {

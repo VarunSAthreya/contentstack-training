@@ -9,20 +9,33 @@ function createCounter() {
     const countValue = document.createElement("p");
     const header = document.createElement("h1");
 
-    // Counter container
     counterContainer.className = "counterContainer";
+    header.className = "counterHeading";
+    countValue.className = "countValue";
+    buttons.className = "buttons";
+    increment.className = "increment";
+    decrement.className = "decrement";
 
-    // Counter Header
     header.innerText = "Counter";
-    header.id = "counterHeading";
+    countValue.innerText = " 00";
+    increment.innerText = "+";
+    decrement.innerText = "-";
 
-    // Counter Value
-    countValue.innerText = "Count: 0";
-    countValue.id = "countValue";
+    const getNegativeVal = (count) => {
+        const val = count * -1;
+        if (val > 9) return "-" + val;
+        return "-0" + val;
+    };
 
-    // Increment and Decrement feature
     const updateValue = () => {
-        countValue.innerText = `Count: ${count}`;
+        const val =
+            count < 10
+                ? count < 0
+                    ? getNegativeVal(count)
+                    : " 0" + count
+                : count;
+
+        countValue.innerText = val;
     };
 
     const incrementFunction = (_) => {
@@ -35,20 +48,12 @@ function createCounter() {
         updateValue();
     };
 
-    buttons.id = "buttons";
-
-    increment.innerText = "+";
     increment.onclick = incrementFunction;
-    increment.className = "increment";
-
-    decrement.innerText = "-";
     decrement.onclick = decrementFunction;
-    decrement.className = "decrement";
 
     buttons.appendChild(increment);
     buttons.appendChild(decrement);
 
-    // Append all the elements
     counterContainer.appendChild(header);
     counterContainer.appendChild(countValue);
     counterContainer.appendChild(buttons);
