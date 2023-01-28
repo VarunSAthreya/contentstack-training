@@ -1,0 +1,68 @@
+.timerGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
+}
+
+.timerContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+}
+
+.timerHeader {
+    margin-bottom: 0.8rem;
+    font-size: 3rem;
+}
+
+.timerDisplay {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Martian Mono', monospace;
+}
+
+.start, .reset, .pause {
+    padding: 10px 20px;
+    margin: 15px;
+    font-size: 1rem;
+    border-radius: 25%;
+    border: none;
+    color: white;
+}
+
+.start {
+    background-color: green;
+}
+
+.reset {
+    background-color: red;
+}
+
+.pause {
+    background-color: darkorange;
+}
+
+@media only screen and (max-width: 400px) {
+
+    .timerHeader {
+        font-size: 2rem;
+    }
+
+    .timerDisplay {
+        font-size: 1.5rem;
+    }
+
+    .start, .reset, .pause {
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+
+    .timerGrid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

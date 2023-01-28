@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono&family=Montserrat:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', 'Poppins', 'Helvetica', sans-serif;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.nav button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1rem;
+    border-radius: 25%;
+    border: none;
+}
+
+.dark-theme {
+    background-color: black;
+    color: white;
+}
