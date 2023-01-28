@@ -1,7 +1,7 @@
 import { generateUniqueId } from "../utils/index.js";
 
 class Timer {
-    constructor(body) {
+    constructor(parent) {
         this.id = generateUniqueId({ prefix: "timer" });
 
         this.timerContainer = document.createElement("div");
@@ -18,7 +18,7 @@ class Timer {
 
         this.init = null;
 
-        this.body = body;
+        this.parent = parent;
         this.#setDefaultValues();
     }
 
@@ -37,7 +37,7 @@ class Timer {
         this.reset.innerText = "Reset";
     }
 
-    #displayTimer() {
+    #runTimer() {
         this.ms += 10;
 
         if (this.ms == 1000) {
@@ -81,7 +81,7 @@ class Timer {
                     clearInterval(this.init);
                 }
                 this.init = setInterval(() => {
-                    this.#displayTimer();
+                    this.#runTimer();
                 }, 10);
             }
         };
@@ -107,7 +107,7 @@ class Timer {
         this.timerContainer.appendChild(this.timerDisplay);
         this.timerContainer.appendChild(this.buttons);
 
-        this.body.appendChild(this.timerContainer);
+        this.parent.appendChild(this.timerContainer);
     }
 
     mount() {
