@@ -53,13 +53,14 @@ function changeMode() {
 
 modeSwitch.onclick = changeMode;
 
-themeSwitch.innerText = "Dark";
+themeSwitch.innerText = "Light";
+document.body.className = "dark-theme";
 
 themeSwitch.onclick = function () {
     if (themeSwitch.innerText === "Dark") {
         themeSwitch.innerText = "Light";
         document.body.className = "dark-theme";
-    } else {
+    } else if (themeSwitch.innerText === "Light") {
         themeSwitch.innerText = "Dark";
         document.body.className = "";
     }
