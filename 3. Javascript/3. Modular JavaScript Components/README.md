@@ -2,7 +2,7 @@
 
 ## Problem Statement
 
-**`Note: This is a continuation of the previous problem statement. Which can be found `** <string> <code> <a href="https://github.com/VarunSAthreya/contentstack-training/tree/main/3.%20Javascript/2.%20Dom%20Manipulation" target="_blank" rel="noopener noreferrer" >here</a> </code></strong>
+**`Note: This is a continuation of the previous problem statement. Which can be found` [`here.`](https://github.com/VarunSAthreya/contentstack-training/tree/main/3.%20Javascript/2.%20Dom%20Manipulation)**
 
 This task will combine your knowledge of JavaScript modules and classes.
 A big application is a collection of smaller components. Each component comes with its own code and business logic.
