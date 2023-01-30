@@ -1,7 +1,7 @@
 import { generateUniqueId } from "../utils/index.js";
 
 class Counter {
-    constructor(parent) {
+    constructor() {
         this.id = generateUniqueId({ prefix: "counter" });
 
         this.count = 0;
@@ -12,7 +12,8 @@ class Counter {
         this.buttons = document.createElement("div");
         this.countValue = document.createElement("p");
         this.header = document.createElement("h1");
-        this.parent = parent;
+
+        this.isMounted = false;
 
         this.#setDefaultValues();
     }
@@ -60,7 +61,7 @@ class Counter {
         this.#updateValue();
     };
 
-    #createCounter() {
+    #render() {
         this.increment.onclick = this.#incrementFunction;
         this.decrement.onclick = this.#decrementFunction;
 
@@ -71,17 +72,23 @@ class Counter {
         this.counterContainer.appendChild(this.countValue);
         this.counterContainer.appendChild(this.buttons);
 
-        // Append the container to root->parent
-        this.parent.appendChild(this.counterContainer);
+        return this.counterContainer;
     }
 
-    mount() {
-        if (document.getElementById(this.id)) {
+    mount(parent) {
+        if (this.isMounted) {
             console.log("Counter Already Mounted!");
             return;
         }
 
-        this.#createCounter();
+        this.isMounted = true;
+
+        if (parent) {
+            parent.appendChild(this.#render());
+            return;
+        }
+
+        document.body.appendChild(this.#render());
     }
 }
 

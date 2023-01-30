@@ -18,12 +18,12 @@ let mode = "timer";
 
 function addWidget() {
     if (mode === "timer") {
-        const timer = new Timer(body);
+        const timer = new Timer();
 
-        timer.mount();
+        timer.mount(body);
     } else {
-        const counter = new Counter(body);
-        counter.mount();
+        const counter = new Counter();
+        counter.mount(body);
     }
 }
 

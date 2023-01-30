@@ -1,7 +1,7 @@
 import { generateUniqueId } from "../utils/index.js";
 
 class Timer {
-    constructor(parent) {
+    constructor() {
         this.id = generateUniqueId({ prefix: "timer" });
 
         this.timerContainer = document.createElement("div");
@@ -18,7 +18,8 @@ class Timer {
 
         this.init = null;
 
-        this.parent = parent;
+        this.isMounted = false;
+
         this.#setDefaultValues();
     }
 
@@ -67,7 +68,7 @@ class Timer {
         this.timerDisplay.innerText = ` ${h} : ${m} : ${s} : ${mi}`;
     }
 
-    #createTimer() {
+    #render() {
         this.start.onclick = () => {
             if (this.start.innerText === "Pause") {
                 this.start.className = "start";
@@ -107,16 +108,23 @@ class Timer {
         this.timerContainer.appendChild(this.timerDisplay);
         this.timerContainer.appendChild(this.buttons);
 
-        this.parent.appendChild(this.timerContainer);
+        return this.timerContainer;
     }
 
-    mount() {
-        if (document.getElementById(this.id)) {
+    mount(parent) {
+        if (this.isMounted) {
             console.log("Timer Already Mounted!");
             return;
         }
 
-        this.#createTimer();
+        this.isMounted = true;
+
+        if (parent) {
+            parent.appendChild(this.#render());
+            return;
+        }
+
+        document.body.appendChild(this.#render());
     }
 }
 
