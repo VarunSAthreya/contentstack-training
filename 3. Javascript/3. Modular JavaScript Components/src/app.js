@@ -1,5 +1,4 @@
-import { Counter } from "./counter/index.js";
-import { Timer } from "./timer/index.js";
+import { Counter, Timer } from "./components/index.js";
 
 const root = document.getElementById("root");
 

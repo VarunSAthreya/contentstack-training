@@ -92,4 +92,4 @@ class Counter {
     }
 }
 
-export { Counter };
+export default Counter;

@@ -128,4 +128,4 @@ class Timer {
     }
 }
 
-export { Timer };
+export default Timer;
