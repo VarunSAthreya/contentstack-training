@@ -1,5 +1,5 @@
 import { footerData } from "../data/index.js";
-import Component from "../utils/Component.js";
+import Component from "../lib/Component.js";
 
 class Footer extends Component {
     constructor() {

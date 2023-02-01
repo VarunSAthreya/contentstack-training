@@ -1,5 +1,5 @@
 import { personalDetails, profileButtons } from "../data/index.js";
-import Component from "../utils/Component.js";
+import Component from "../lib/Component.js";
 
 class Profile extends Component {
     constructor() {

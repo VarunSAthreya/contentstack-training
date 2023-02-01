@@ -1,5 +1,5 @@
 import { blogData, blogHeadingDetails } from "../data/index.js";
-import Component from "../utils/Component.js";
+import Component from "../lib/Component.js";
 
 class Blog extends Component {
     constructor() {
