@@ -157,7 +157,7 @@ export const blogData = [
         },
         title: "Implementing GraphQL using Typescript and Node JS",
         description:
-            "GraphQL is a query language for your API that allows clients to request exactly the data they need, and nothing more. It is often used as an alternative to REST APIs, which require clients to request fixed sets of data and may return unnecessary data.",
+            "GraphQL is a query language for your API that allows clients to request exactly the data they need, and nothing more.",
         href: "https://varunsathreya.hashnode.dev/implementing-graphql-using-typescript-and-node-js",
     },
     {

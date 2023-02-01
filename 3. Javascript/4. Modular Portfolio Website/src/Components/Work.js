@@ -1,5 +1,6 @@
 import { projectData, workDetails } from "../data/index.js";
 import Component from "../lib/Component.js";
+import Banner from "./Banner.js";
 
 class Work extends Component {
     constructor() {
@@ -34,50 +35,8 @@ class Work extends Component {
         });
 
         projectData.forEach((data) => {
-            const project = document.createElement("div");
-
-            const imageContainer = document.createElement("div");
-            const image = document.createElement("img");
-            const overlay = document.createElement("div");
-
-            const textContainer = document.createElement("div");
-            const title = document.createElement("h3");
-            const description = document.createElement("p");
-            const a = document.createElement("a");
-            const button = document.createElement("button");
-
-            project.classList.add("project");
-            imageContainer.classList.add("img-container");
-            overlay.classList.add("img-overlay");
-            textContainer.classList.add("project-text-container");
-            title.classList.add("project-text-title");
-            description.classList.add("project-text-subtitle");
-
-            a.target = "_blank";
-            a.rel = "noopener noreferrer";
-            button.innerText = "Repository";
-
-            image.src = data.image.src;
-            image.alt = data.image.alt;
-            image.loading = "lazy";
-
-            title.innerText = data.title;
-            description.innerText = data.description;
-            a.href = data.href;
-
-            imageContainer.appendChild(image);
-            imageContainer.appendChild(overlay);
-
-            a.appendChild(button);
-
-            textContainer.appendChild(title);
-            textContainer.appendChild(description);
-            textContainer.appendChild(a);
-
-            project.appendChild(imageContainer);
-            project.appendChild(textContainer);
-
-            this.projectContainer.appendChild(project);
+            const project = new Banner(data);
+            project.mount(this.projectContainer);
         });
 
         this.section.appendChild(this.title);
