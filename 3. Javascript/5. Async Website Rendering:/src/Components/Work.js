@@ -1,9 +1,8 @@
-import { projectData, workDetails } from "../data/index.js";
 import Component from "../lib/Component.js";
 import Banner from "./Banner.js";
 
 class Work extends Component {
-    constructor() {
+    constructor(data) {
         super();
         this.section = document.createElement("section");
 
@@ -11,6 +10,12 @@ class Work extends Component {
         this.description = document.createElement("p");
         this.chipsWrapper = document.createElement("div");
         this.projectContainer = document.createElement("div");
+
+        const { projectData, workData } = data;
+        this.projectData = projectData;
+        this.workData = workData;
+
+        console.log(data);
     }
 
     render() {
@@ -22,10 +27,10 @@ class Work extends Component {
         this.chipsWrapper.classList.add("chips-wrapper");
         this.projectContainer.classList.add("projects-container");
 
-        this.title.innerText = workDetails.title;
-        this.description.innerText = workDetails.description;
+        this.title.innerText = this.workData.title;
+        this.description.innerText = this.workData.description;
 
-        workDetails.chips.forEach((data) => {
+        this.workData.chips.forEach((data) => {
             const chip = document.createElement("div");
             chip.classList.add("chip");
             chip.style = `border-color: ${data.color}`;
@@ -34,7 +39,7 @@ class Work extends Component {
             this.chipsWrapper.appendChild(chip);
         });
 
-        projectData.forEach((data) => {
+        this.projectData.forEach((data) => {
             const project = new Banner(data);
             project.mount(this.projectContainer);
         });

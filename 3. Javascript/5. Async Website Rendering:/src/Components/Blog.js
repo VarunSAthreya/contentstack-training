@@ -1,15 +1,17 @@
-import { blogData, blogHeadingDetails } from "../data/index.js";
+import { blogHeadingDetails } from "../data/index.js";
 import Component from "../lib/Component.js";
 import Banner from "./Banner.js";
 
 class Blog extends Component {
-    constructor() {
+    constructor(data) {
         super();
         this.section = document.createElement("section");
 
         this.title = document.createElement("h2");
         this.description = document.createElement("p");
         this.blogsContainer = document.createElement("div");
+
+        this.blogData = data;
     }
 
     render() {
@@ -23,7 +25,7 @@ class Blog extends Component {
         this.title.innerText = blogHeadingDetails.title;
         this.description.innerText = blogHeadingDetails.description;
 
-        blogData.forEach((data) => {
+        this.blogData.forEach((data) => {
             const blog = new Banner(data);
             blog.mount(this.blogsContainer);
         });

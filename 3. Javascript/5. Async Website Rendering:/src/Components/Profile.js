@@ -1,8 +1,7 @@
-import { personalDetails, profileButtons } from "../data/index.js";
 import Component from "../lib/Component.js";
 
 class Profile extends Component {
-    constructor() {
+    constructor(data) {
         super();
 
         this.section = document.createElement("section");
@@ -15,19 +14,23 @@ class Profile extends Component {
         this.detailsDescription = document.createElement("p");
 
         this.buttonsContainer = document.createElement("div");
+
+        const { personalDetails, profileButtons } = data;
+        this.personalDetails = personalDetails;
+        this.profileButtons = profileButtons;
     }
 
     render() {
         this.section.classList.add("hero");
         this.imageContainer.classList.add("hero-img");
 
-        this.image.src = personalDetails.image.src;
-        this.image.alt = personalDetails.image.alt;
+        this.image.src = this.personalDetails.image.src;
+        this.image.alt = this.personalDetails.image.alt;
 
-        this.detailsHeading.innerText = personalDetails.heading;
-        this.detailsDescription.innerText = personalDetails.description;
+        this.detailsHeading.innerText = this.personalDetails.heading;
+        this.detailsDescription.innerText = this.personalDetails.description;
 
-        profileButtons.forEach((ele) => {
+        this.profileButtons.forEach((ele) => {
             const a = document.createElement("a");
             const button = document.createElement("button");
 

@@ -1,14 +1,16 @@
-import { galleryDetails, photoDetails } from "../data/index.js";
+import { galleryDetails } from "../data/index.js";
 import Component from "../lib/Component.js";
 
 class Gallery extends Component {
-    constructor() {
+    constructor(data) {
         super();
 
         this.section = document.createElement("section");
         this.title = document.createElement("h2");
         this.description = document.createElement("p");
         this.container = document.createElement("div");
+
+        this.photoDetails = data;
     }
 
     render() {
@@ -25,7 +27,7 @@ class Gallery extends Component {
 
         const ul = document.createElement("ul");
 
-        photoDetails.forEach((data) => {
+        this.photoDetails.forEach((data) => {
             const a = document.createElement("a");
             const img = document.createElement("img");
             const li = document.createElement("li");
@@ -42,7 +44,7 @@ class Gallery extends Component {
 
         this.container.appendChild(ul);
 
-        photoDetails.forEach((data) => {
+        this.photoDetails.forEach((data) => {
             const a = document.createElement("a");
             const img = document.createElement("img");
 

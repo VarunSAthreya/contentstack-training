@@ -1,20 +1,21 @@
-import { navTitle, profileLinks } from "../data/index.js";
+import { navTitle } from "../data/index.js";
 import Component from "../lib/Component.js";
 
 class NavBar extends Component {
-    constructor() {
+    constructor(profileLinks) {
         super();
 
         this.nav = document.createElement("nav");
         this.title = document.createElement("h2");
         this.profileLinksContainer = document.createElement("div");
+        this.profileLinks = profileLinks;
     }
 
     render() {
         this.title.innerText = navTitle;
         this.profileLinksContainer.classList.add("nav-links");
 
-        profileLinks.forEach((profileLink, i) => {
+        this.profileLinks.forEach((profileLink, i) => {
             const img = document.createElement("img");
             img.src = profileLink.img;
             img.alt = profileLink.alt;
