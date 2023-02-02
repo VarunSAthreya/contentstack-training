@@ -14,8 +14,6 @@ class Work extends Component {
         const { projectData, workData } = data;
         this.projectData = projectData;
         this.workData = workData;
-
-        console.log(data);
     }
 
     render() {
