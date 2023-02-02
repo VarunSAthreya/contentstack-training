@@ -14,17 +14,17 @@ export const footerData = "&copy;2023 - <code> VarunSAthreya </code>";
 
 export const links = {
     blog_url:
-        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering%3A/data/blog.json",
+        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering/data/blog.json",
     gallery_url:
-        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering%3A/data/gallery.json",
+        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering/data/gallery.json",
     personal_url:
-        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering%3A/data/personal-data.json",
+        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering/data/personal-data.json",
     profile_buttons_url:
-        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering%3A/data/profile-buttons.json",
+        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering/data/profile-buttons.json",
     profile_links:
-        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering%3A/data/profile-links.json",
+        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering/data/profile-links.json",
     project_url:
-        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering%3A/data/projects.json",
+        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering/data/projects.json",
     work_url:
-        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering%3A/data/work.json",
+        "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/5.%20Async%20Website%20Rendering/data/work.json",
 };
