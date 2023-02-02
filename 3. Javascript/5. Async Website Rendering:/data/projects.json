@@ -1,0 +1,29 @@
+[
+    {
+        "image": {
+            "src": "./assets/placement-management.png",
+            "alt": "project 1"
+        },
+        "title": "Placement Management",
+        "description": "The Placement Management portal is a tool that helps students and administrators coordinate college placement.",
+        "href": "https://github.com/VarunSAthreya/placement-management"
+    },
+    {
+        "image": {
+            "src": "./assets/rise-against-hunger.png",
+            "alt": "project 2"
+        },
+        "title": "Rise against hunger",
+        "description": "Rise Against hunger is an web and mobile app that helps to combat hunger. It provides a forum to donate food and to take surveys for hunger hot-spots. The web portal also has an admin panel to look at each and every detail about the forum.",
+        "href": "https://github.com/VarunSAthreya/rise-against-hunger"
+    },
+    {
+        "image": {
+            "src": "./assets/mental-health-matters.png",
+            "alt": "project 3"
+        },
+        "title": "Mental Health Matters",
+        "description": "Mental Health Matters is a web app that is used to schedule appointments and take surveys which is used to for resolving mental health-related issues.",
+        "href": "https://github.com/VarunSAthreya/mental-health-matters"
+    }
+]

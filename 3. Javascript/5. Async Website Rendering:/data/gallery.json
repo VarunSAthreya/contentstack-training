@@ -1,0 +1,56 @@
+[
+    {
+        "src": "./assets/photos/1.jpeg",
+        "href": "#img_1",
+        "id": "img_1",
+        "lightbox_href": "#_1"
+    },
+    {
+        "src": "./assets/photos/2.jpeg",
+        "href": "#img_2",
+        "id": "img_2",
+        "lightbox_href": "#_2"
+    },
+    {
+        "src": "./assets/photos/3.jpeg",
+        "href": "#img_3",
+        "id": "img_3",
+        "lightbox_href": "#_3"
+    },
+    {
+        "src": "./assets/photos/4.jpeg",
+        "href": "#img_4",
+        "id": "img_4",
+        "lightbox_href": "#_4"
+    },
+    {
+        "src": "./assets/photos/5.jpeg",
+        "href": "#img_5",
+        "id": "img_5",
+        "lightbox_href": "#_5"
+    },
+    {
+        "src": "./assets/photos/6.jpeg",
+        "href": "#img_6",
+        "id": "img_6",
+        "lightbox_href": "#_6"
+    },
+    {
+        "src": "./assets/photos/7.jpeg",
+        "href": "#img_7",
+        "id": "img_7",
+        "lightbox_href": "#_7"
+    },
+    {
+        "src": "./assets/photos/8.jpeg",
+        "href": "#img_8",
+        "id": "img_8",
+        "lightbox_href": "#_8"
+    },
+    {
+        "src": "./assets/photos/9.jpeg",
+        "href": "#img_9",
+        "id": "img_9",
+        "lightbox_href": "#_9"
+    }
+]

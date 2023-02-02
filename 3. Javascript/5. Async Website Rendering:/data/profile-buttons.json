@@ -1,0 +1,17 @@
+[
+    {
+        "classname": "white",
+        "href": "#work",
+        "text": "Work"
+    },
+    {
+        "classname": "white",
+        "href": "#blog",
+        "text": "Blog"
+    },
+    {
+        "classname": "white",
+        "href": "#gallery",
+        "text": "Gallery"
+    }
+]

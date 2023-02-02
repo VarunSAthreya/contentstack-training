@@ -1,0 +1,58 @@
+{
+    "title": "Work",
+    "description": "Below are the technologies which I have worked extensively withand few projects which uses few of these technologies.",
+    "chips": [
+        {
+            "color": "#61dbfb",
+            "text": "react"
+        },
+        {
+            "color": "#333333",
+            "text": "nextjs"
+        },
+        {
+            "color": "#f5820d",
+            "text": "firebase"
+        },
+        {
+            "color": "#5b5a5a",
+            "text": "express"
+        },
+        {
+            "color": "#22f110",
+            "text": "node"
+        },
+        {
+            "color": "#3fa037",
+            "text": "mongo db"
+        },
+        {
+            "color": "#053f66",
+            "text": "postgresql"
+        },
+        {
+            "color": "#f0db4f",
+            "text": "javascript"
+        },
+        {
+            "color": "#007acc",
+            "text": "typescript"
+        },
+        {
+            "color": "#e34c26",
+            "text": "html"
+        },
+        {
+            "color": "#e656ccf9",
+            "text": "graphql"
+        },
+        {
+            "color": "#2965f1",
+            "text": "css"
+        },
+        {
+            "color": "#257bdc",
+            "text": "flutter"
+        }
+    ]
+}

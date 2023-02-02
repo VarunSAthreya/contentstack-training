@@ -1,0 +1,12 @@
+[
+    {
+        "url": "https://github.com/VarunSAthreya",
+        "alt": "github link",
+        "img": "./assets/github.svg"
+    },
+    {
+        "url": "https://linkedin.com/in/varunsathreya",
+        "alt": "linkedin link",
+        "img": "./assets/linkedin.svg"
+    }
+]
