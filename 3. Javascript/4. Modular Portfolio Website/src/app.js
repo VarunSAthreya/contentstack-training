@@ -7,8 +7,6 @@ import {
     Work,
 } from "./Components/index.js";
 
-const root = document.getElementById("root");
-
 [
     new NavBar(),
     new Profile(),
@@ -16,4 +14,4 @@ const root = document.getElementById("root");
     new Blog(),
     new Gallery(),
     new Footer(),
-].forEach((comp) => comp.mount(root));
+].forEach((comp) => comp.mount());
