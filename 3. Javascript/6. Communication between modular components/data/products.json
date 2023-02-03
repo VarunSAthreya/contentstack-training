@@ -1,0 +1,83 @@
+[
+    {
+        "id": "f7a61594-b7d0-491c-b2b5-6e78b3c54751",
+        "name": "Product 1",
+        "price": 199,
+        "src": "./assets/photos/1.jpeg",
+        "href": "#img_1",
+        "lightbox_id": "img_1",
+        "lightbox_href": "#_1"
+    },
+    {
+        "id": "3bd0ff5f-fbf7-4a88-9469-996d50073ad0",
+        "name": "Product 2",
+        "price": 199,
+        "src": "./assets/photos/2.jpeg",
+        "href": "#img_2",
+        "lightbox_id": "img_2",
+        "lightbox_href": "#_2"
+    },
+    {
+        "id": "b4c7a8cd-d22e-4c60-ac1d-855d2d8337b5",
+        "name": "Product 3",
+        "price": 199,
+        "src": "./assets/photos/3.jpeg",
+        "href": "#img_3",
+        "lightbox_id": "img_3",
+        "lightbox_href": "#_3"
+    },
+    {
+        "id": "79cf8ab4-c8aa-4900-ac3b-83ba28a5caa7",
+        "name": "Product 4",
+        "price": 199,
+        "src": "./assets/photos/4.jpeg",
+        "href": "#img_4",
+        "lightbox_id": "img_4",
+        "lightbox_href": "#_4"
+    },
+    {
+        "id": "e426aa20-4078-4c28-84a6-43320707e919",
+        "name": "Product 5",
+        "price": 199,
+        "src": "./assets/photos/5.jpeg",
+        "href": "#img_5",
+        "lightbox_id": "img_5",
+        "lightbox_href": "#_5"
+    },
+    {
+        "id": "e06f1c3f-013e-4261-bf3b-8eeda66325f1",
+        "name": "Product 6",
+        "price": 199,
+        "src": "./assets/photos/6.jpeg",
+        "href": "#img_6",
+        "lightbox_id": "img_6",
+        "lightbox_href": "#_6"
+    },
+    {
+        "id": "271fcd7d-b9c8-4279-914d-bad50ccfc861",
+        "name": "Product 7",
+        "price": 199,
+        "src": "./assets/photos/7.jpeg",
+        "href": "#img_7",
+        "lightbox_id": "img_7",
+        "lightbox_href": "#_7"
+    },
+    {
+        "id": "c894ab11-07c5-44c6-a214-9118f3061420",
+        "name": "Product 8",
+        "price": 199,
+        "src": "./assets/photos/8.jpeg",
+        "href": "#img_8",
+        "lightbox_id": "img_8",
+        "lightbox_href": "#_8"
+    },
+    {
+        "id": "99137c86-c06d-4355-ada9-7fd984025302",
+        "name": "Product 9",
+        "price": 199,
+        "src": "./assets/photos/9.jpeg",
+        "href": "#img_9",
+        "lightbox_id": "img_9",
+        "lightbox_href": "#_9"
+    }
+]
