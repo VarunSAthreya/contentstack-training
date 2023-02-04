@@ -11,6 +11,12 @@ class Header extends Component {
         this.count = document.createElement("span");
     }
 
+    static incrementCount() {
+        const count = document.querySelector(".cart-count");
+
+        count.innerHTML = Number(count.innerHTML) + 1;
+    }
+
     render() {
         this.h1.innerText = "Product Listing";
         this.iconContainer.classList.add("cart-icon");

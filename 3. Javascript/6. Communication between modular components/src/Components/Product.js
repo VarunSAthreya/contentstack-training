@@ -1,4 +1,6 @@
 import Component from "../lib/Component.js";
+import Header from "./Header.js";
+import Sidebar from "./Sidebar.js";
 class Product extends Component {
     constructor(data) {
         super();
@@ -15,6 +17,11 @@ class Product extends Component {
         this.data = data;
     }
 
+    addToCart() {
+        Sidebar.addPreview(this);
+        Header.incrementCount();
+    }
+
     render() {
         this.card.id = this.id;
         this.card.classList.add("product-card");
@@ -26,8 +33,9 @@ class Product extends Component {
         this.h3.innerText = this.data.name;
         this.p.innerText = this.data.price;
         this.button.innerText = "Add to Cart";
+        this.button.onclick = this.addToCart.bind(this);
 
-        this.a.appendChild(img);
+        this.a.appendChild(this.img);
 
         this.card.appendChild(this.a);
         this.card.appendChild(this.h3);
