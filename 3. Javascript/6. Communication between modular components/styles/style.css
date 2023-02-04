@@ -141,11 +141,15 @@ header img {
     border-radius: 50%;
 }
 
-.cart-preview-item h3, cart-preview-item p {
+.cart-preview-item h3, .cart-preview-item p {
     margin: 0;
-    font-size: 0.8em;
+    font-size: 1rem;
     background-color: #5A5A5A;
     color: white;
+}
+
+.cart-preview-item p, #total-price {
+    color: yellow;
 }
 
 hr {
@@ -169,7 +173,7 @@ hr {
         text-align: left;
     }
 
-    .cart-preview-item h3, cart-preview-item p {
+    .cart-preview-item h3, .cart-preview-item p {
         font-size: 0.6em;
         text-overflow: ellipsis;
     }
@@ -191,7 +195,7 @@ hr {
         text-overflow: ellipsis;
     }
 
-    .cart-preview-item h3, cart-preview-item p {
+    .cart-preview-item h3, .cart-preview-item p {
         font-size: 0.5rem;
         text-overflow: ellipsis;
     }

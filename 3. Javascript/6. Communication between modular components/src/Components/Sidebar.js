@@ -5,8 +5,9 @@ class Sidebar extends Component {
         super();
 
         this.aside = document.createElement("aside");
-        this.h2 = document.createElement("h2");
-        this.ul = document.createElement("ul");
+        this.title = document.createElement("h2");
+        this.previewList = document.createElement("ul");
+        this.totalPrice = document.createElement("h2");
     }
 
     static addPreview(product) {
@@ -14,6 +15,9 @@ class Sidebar extends Component {
         cartPreview.style.display = "block";
 
         const quantity = document.getElementById(`${product.id}-quantity`);
+        const totalPrice = document.getElementById("total-price");
+        totalPrice.innerText =
+            Number(totalPrice.innerText) + product.data.price;
 
         if (quantity) {
             quantity.innerText = Number(quantity.innerText) + 1;
@@ -25,7 +29,7 @@ class Sidebar extends Component {
             <div class="cart-preview-item" id="${product.id}-preview">
                 <img src="${product.data.src}" alt="${product.data.name}">
                 <h3>${product.data.name}</h3>
-                <h3 id="${product.id}-quantity">${product.quantity.innerText}</h3>
+                <p id="${product.id}-quantity">${product.quantity.innerText}</p>
                 <hr/>
             </div>
         `;
@@ -36,6 +40,9 @@ class Sidebar extends Component {
 
     static removeFromPreview(product) {
         const quantity = document.getElementById(`${product.id}-quantity`);
+        const totalPrice = document.getElementById("total-price");
+        totalPrice.innerText =
+            Number(totalPrice.innerText) - product.data.price;
 
         if (quantity.innerText === "1") {
             document.getElementById(`${product.id}-preview`).remove();
@@ -46,11 +53,14 @@ class Sidebar extends Component {
 
     render() {
         this.aside.classList.add("cart-preview");
-        this.ul.classList.add("cart-preview-list");
-        this.h2.innerText = "Preview";
+        this.previewList.classList.add("cart-preview-list");
+        this.title.innerText = "Preview";
+        this.totalPrice.innerText = "0";
+        this.totalPrice.id = "total-price";
 
-        this.aside.appendChild(this.h2);
-        this.aside.appendChild(this.ul);
+        this.aside.appendChild(this.title);
+        this.aside.appendChild(this.totalPrice);
+        this.aside.appendChild(this.previewList);
 
         return this.aside;
     }
