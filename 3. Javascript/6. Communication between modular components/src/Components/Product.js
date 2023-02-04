@@ -10,16 +10,30 @@ class Product extends Component {
         this.card = document.createElement("div");
         this.a = document.createElement("a");
         this.img = document.createElement("img");
-        this.h3 = document.createElement("h3");
-        this.p = document.createElement("p");
-        this.button = document.createElement("button");
+        this.name = document.createElement("h3");
+        this.price = document.createElement("p");
+
+        this.buttonContainer = document.createElement("div");
+
+        this.add = document.createElement("button");
+        this.remove = document.createElement("button");
+        this.quantity = document.createElement("p");
 
         this.data = data;
     }
 
     addToCart() {
+        this.quantity.innerText = Number(this.quantity.innerText) + 1;
         Sidebar.addPreview(this);
         Header.incrementCount();
+    }
+
+    removeFromCart() {
+        if (Number(this.quantity.innerText) < 1) return;
+
+        this.quantity.innerText = Number(this.quantity.innerText) - 1;
+        Sidebar.removeFromPreview(this);
+        Header.decrementCount();
     }
 
     render() {
@@ -30,17 +44,29 @@ class Product extends Component {
         this.img.src = this.data.src;
         this.img.alt = this.data.name;
 
-        this.h3.innerText = this.data.name;
-        this.p.innerText = this.data.price;
-        this.button.innerText = "Add to Cart";
-        this.button.onclick = this.addToCart.bind(this);
+        this.name.innerText = this.data.name;
+        this.price.innerText = this.data.price;
+        this.price.id = `${this.id}-price`;
+
+        this.add.innerText = "+";
+        this.add.onclick = this.addToCart.bind(this);
+        this.remove.innerText = "-";
+        this.remove.onclick = this.removeFromCart.bind(this);
+
+        this.quantity.innerText = 0;
+        // this.quantity.id = `${this.id}-quantity`;
+
+        this.buttonContainer.classList.add("quantity-control");
+        this.buttonContainer.appendChild(this.add);
+        this.buttonContainer.appendChild(this.quantity);
+        this.buttonContainer.appendChild(this.remove);
 
         this.a.appendChild(this.img);
 
         this.card.appendChild(this.a);
-        this.card.appendChild(this.h3);
-        this.card.appendChild(this.p);
-        this.card.appendChild(this.button);
+        this.card.appendChild(this.name);
+        this.card.appendChild(this.price);
+        this.card.appendChild(this.buttonContainer);
 
         return this.card;
     }

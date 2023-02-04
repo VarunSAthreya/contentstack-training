@@ -13,8 +13,12 @@ class Header extends Component {
 
     static incrementCount() {
         const count = document.querySelector(".cart-count");
-
         count.innerHTML = Number(count.innerHTML) + 1;
+    }
+
+    static decrementCount() {
+        const count = document.querySelector(".cart-count");
+        count.innerHTML = Number(count.innerHTML) - 1;
     }
 
     render() {

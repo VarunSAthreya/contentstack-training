@@ -10,21 +10,38 @@ class Sidebar extends Component {
     }
 
     static addPreview(product) {
-        console.log(product);
+        const cartPreview = document.querySelector(".cart-preview");
+        cartPreview.style.display = "block";
+
+        const quantity = document.getElementById(`${product.id}-quantity`);
+
+        if (quantity) {
+            quantity.innerText = Number(quantity.innerText) + 1;
+            return;
+        }
 
         let item = document.createElement("li");
         item.innerHTML = `
-            <div class="cart-preview-item">
+            <div class="cart-preview-item" id="${product.id}-preview">
                 <img src="${product.data.src}" alt="${product.data.name}">
                 <h3>${product.data.name}</h3>
+                <h3 id="${product.id}-quantity">${product.quantity.innerText}</h3>
+                <hr/>
             </div>
         `;
 
-        const cartPreview = document.querySelector(".cart-preview");
         const cartPreviewList = document.querySelector(".cart-preview-list");
-
         cartPreviewList.appendChild(item);
-        cartPreview.style.display = "block";
+    }
+
+    static removeFromPreview(product) {
+        const quantity = document.getElementById(`${product.id}-quantity`);
+
+        if (quantity.innerText === "1") {
+            document.getElementById(`${product.id}-preview`).remove();
+            return;
+        }
+        quantity.innerText = Number(quantity.innerText) - 1;
     }
 
     render() {
