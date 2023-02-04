@@ -1,25 +1,22 @@
-const buttons = document.querySelectorAll("button");
-const cartCount = document.querySelector(".cart-count");
-const cartPreview = document.querySelector(".cart-preview");
-const cartPreviewList = document.querySelector(".cart-preview-list");
+import Header from "./Components/Header.js";
+import Lightbox from "./Components/Lightbox.js";
+import ProductContainer from "./Components/ProductContainer.js";
+import Sidebar from "./Components/Sidebar.js";
+import { fetchData } from "./util/index.js";
 
-for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", function () {
-        let count = parseInt(cartCount.textContent);
-        count++;
-        cartCount.textContent = count;
+const url =
+    "https://raw.githubusercontent.com/VarunSAthreya/contentstack-training/main/3.%20Javascript/6.%20Communication%20between%20modular%20components/data/products.json";
 
-        let product = this.dataset.product;
-        console.log(product);
-        let item = document.createElement("li");
-        item.innerHTML = `
-      <div class="cart-preview-item">
-        <img src="${product}.jpg" alt="${product}">
-        <h3>${product}</h3>
-      </div>
-    `;
-        cartPreviewList.appendChild(item);
+const header = new Header();
+header.mount();
 
-        cartPreview.style.display = "block";
-    });
-}
+const sidebar = new Sidebar();
+sidebar.mount();
+
+fetchData(url).then((data) => {
+    const listing = new ProductContainer(data);
+    listing.mount();
+
+    const lightbox = new Lightbox(data);
+    lightbox.mount();
+});
