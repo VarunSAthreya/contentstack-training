@@ -10,7 +10,7 @@ class Sidebar extends Component {
         this.totalPrice = document.createElement("h2");
     }
 
-    static addPreview(product) {
+    static addToPreview(product) {
         const cartPreview = document.querySelector(".cart-preview");
         cartPreview.style.display = "block";
 
@@ -47,6 +47,14 @@ class Sidebar extends Component {
 
         if (quantity.innerText === "1") {
             document.getElementById(`${product.id}-preview`).remove();
+
+            const previewList = document.querySelector(".cart-preview-list");
+            if (previewList.childNodes.length === 0) {
+                // if no child remaining
+                const cartPreview = document.querySelector(".cart-preview");
+                cartPreview.style.display = "none";
+            }
+
             return;
         }
         quantity.innerText = Number(quantity.innerText) - 1;

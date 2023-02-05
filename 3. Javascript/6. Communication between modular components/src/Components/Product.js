@@ -24,7 +24,7 @@ class Product extends Component {
 
     addToCart() {
         this.quantity.innerText = Number(this.quantity.innerText) + 1;
-        Sidebar.addPreview(this);
+        Sidebar.addToPreview(this);
         Header.incrementCount();
     }
 
