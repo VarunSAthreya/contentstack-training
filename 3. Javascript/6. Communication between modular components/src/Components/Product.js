@@ -46,7 +46,6 @@ class Product extends Component {
 
         this.name.innerText = this.data.name;
         this.price.innerText = this.data.price;
-        this.price.id = `${this.id}-price`;
 
         this.add.innerText = "+";
         this.add.onclick = this.addToCart.bind(this);
@@ -54,7 +53,6 @@ class Product extends Component {
         this.remove.onclick = this.removeFromCart.bind(this);
 
         this.quantity.innerText = 0;
-        // this.quantity.id = `${this.id}-quantity`;
 
         this.buttonContainer.classList.add("quantity-control");
         this.buttonContainer.appendChild(this.add);

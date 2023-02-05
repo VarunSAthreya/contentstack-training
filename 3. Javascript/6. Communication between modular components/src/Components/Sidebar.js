@@ -25,8 +25,9 @@ class Sidebar extends Component {
         }
 
         let item = document.createElement("li");
+        item.id = `${product.id}-preview`;
         item.innerHTML = `
-            <div class="cart-preview-item" id="${product.id}-preview">
+            <div class="cart-preview-item">
                 <img src="${product.data.src}" alt="${product.data.name}">
                 <h3>${product.data.name}</h3>
                 <p id="${product.id}-quantity">${product.quantity.innerText}</p>
