@@ -79,8 +79,94 @@ const createUser = async (req, res) => {
         });
     } catch (err) {
         log(err);
+        if (err.errors)
+            return res.status(503).send({
+                message: err.flatten().fieldErrors,
+            });
+
         return res.status(503).send({
-            message: `${err.errors[0].message} at ${err.errors[0].path}`,
+            message: err.message,
+        });
+    }
+};
+
+const updateUser = async (req, res) => {
+    try {
+        const {
+            body,
+            params: { id },
+        } = req;
+
+        // Check schema
+        UserSchema.parse(body);
+
+        let users = await fs.readFile(
+            path.resolve("./data/data.json"),
+            "utf-8"
+        );
+        users = JSON.parse(users);
+
+        const index = users.findIndex((user) => user.id === id);
+        if (index < 0) throw new Error((message = "Invalid User ID!"));
+
+        users[index] = body;
+        users[index].id = id;
+
+        await fs.writeFile(
+            path.resolve("./data/data.json"),
+            JSON.stringify(users),
+            "utf-8"
+        );
+
+        return res.status(202).send({
+            message: "User updated!",
+            data: users[index],
+        });
+    } catch (err) {
+        log(err);
+
+        if (err.errors)
+            return res.status(503).send({
+                message: err.flatten().fieldErrors,
+            });
+
+        return res.status(503).send({
+            message: err.message,
+        });
+    }
+};
+
+const deleteUser = async (req, res) => {
+    try {
+        const {
+            params: { id },
+        } = req;
+
+        let users = await fs.readFile(
+            path.resolve("./data/data.json"),
+            "utf-8"
+        );
+        users = JSON.parse(users);
+
+        const index = users.findIndex((user) => user.id === id);
+        if (index < 0) throw new Error((message = "Invalid User ID!"));
+
+        const user = users[index];
+        users.splice(index, 1);
+
+        await fs.writeFile(
+            path.resolve("./data/data.json"),
+            JSON.stringify(users),
+            "utf-8"
+        );
+
+        return res.status(202).send({
+            message: "User Deleted!",
+            data: user,
+        });
+    } catch (err) {
+        return res.status(503).send({
+            message: err.message,
         });
     }
 };
@@ -89,4 +175,6 @@ module.exports = {
     getAllUser,
     getUserById,
     createUser,
+    updateUser,
+    deleteUser,
 };
