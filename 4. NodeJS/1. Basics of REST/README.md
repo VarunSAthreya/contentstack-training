@@ -1,6 +1,10 @@
-# REST Methods
+# Express server with File System
 
-This repository is an example code for using REST guidelines for doing CRUD operations on a data source.
+In this task you will create a REST api using the underlying file system.
+
+Data will be stored in a json file in the project folder. The project will replicate the express server we build during sessions.
+
+The API should provide CRUD capability. The Readme file will act like the documentation source.
 
 ## Prerequisites
 
@@ -17,6 +21,11 @@ This repository is an example code for using REST guidelines for doing CRUD oper
 │   ├── app.js
 │   ├── controllers
 │   │   └── user.controller.js
+│   ├── helper
+│   │   └── AppError.js
+│   ├── middleware
+│   │   ├── ErrorHandler.js
+│   │   └── user.middleware.js
 │   ├── model
 │   │   └── User.model.js
 │   └── routes
@@ -33,6 +42,7 @@ This repository is an example code for using REST guidelines for doing CRUD oper
     -   `POST`: Create a new user.
 
 -   `/users/:id`
+
     -   `GET`: Get user by ID.
     -   `PUT`: Update(full) user by ID.
     -   `DELETE`: Delete user by ID.
@@ -55,4 +65,12 @@ pnpm dev
 
 ```sh
 pnpm start
+```
+
+-   Set environment variables:
+
+Create a `.env` file at the root directory of the project.
+
+```env
+PORT=<PORT>
 ```
