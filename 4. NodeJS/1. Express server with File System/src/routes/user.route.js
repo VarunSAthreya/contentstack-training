@@ -10,7 +10,11 @@ const { validateUserPayload } = require("../middleware/user.middleware");
 
 const router = express.Router();
 
-router.route("/").get(getAllUser).post(validateUserPayload, createUser);
+router
+    .route("/")
+    .get(getAllUser)
+    .post(validateUserPayload, createUser);
+    
 router
     .route("/:id")
     .get(getUserById)

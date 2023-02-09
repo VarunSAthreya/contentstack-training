@@ -1,15 +1,10 @@
-const fs = require("fs").promises;
 const { log } = require("console");
-const path = require("path");
 const AppError = require("../helper/AppError");
+const { readFromFile, writeToFile } = require("../helper/fileIO");
 
 const getAllUser = async (req, res, next) => {
     try {
-        let users = await fs.readFile(
-            path.resolve("./data/data.json"),
-            "utf-8"
-        );
-        users = JSON.parse(users);
+        const users = await readFromFile("./data/data.json");
 
         return res.status(200).send({
             message: "Fetched data successfully.",
@@ -26,11 +21,7 @@ const getUserById = async (req, res, next) => {
             params: { id },
         } = req;
 
-        let users = await fs.readFile(
-            path.resolve("./data/data.json"),
-            "utf-8"
-        );
-        users = JSON.parse(users);
+        const users = await readFromFile("./data/data.json");
 
         const data = users.find((usr) => usr.id === id);
         if (!data) {
@@ -55,20 +46,12 @@ const createUser = async (req, res, next) => {
     try {
         const { body } = req;
 
-        let users = await fs.readFile(
-            path.resolve("./data/data.json"),
-            "utf-8"
-        );
-        users = JSON.parse(users);
+        const users = await readFromFile("./data/data.json");
 
         body.id = Date.now().toString();
         users.push(body);
 
-        await fs.writeFile(
-            path.resolve("./data/data.json"),
-            JSON.stringify(users),
-            "utf-8"
-        );
+        await writeToFile("./data/data.json", users);
 
         return res.status(201).send({
             message: "User Created!",
@@ -93,11 +76,7 @@ const updateUser = async (req, res, next) => {
             params: { id },
         } = req;
 
-        let users = await fs.readFile(
-            path.resolve("./data/data.json"),
-            "utf-8"
-        );
-        users = JSON.parse(users);
+        const users = await readFromFile("./data/data.json");
 
         const index = users.findIndex((user) => user.id === id);
         if (index < 0)
@@ -109,11 +88,7 @@ const updateUser = async (req, res, next) => {
         users[index] = body;
         users[index].id = id;
 
-        await fs.writeFile(
-            path.resolve("./data/data.json"),
-            JSON.stringify(users),
-            "utf-8"
-        );
+        await writeToFile("./data/data.json", users);
 
         return res.status(202).send({
             message: "User updated!",
@@ -137,11 +112,7 @@ const deleteUser = async (req, res, next) => {
             params: { id },
         } = req;
 
-        let users = await fs.readFile(
-            path.resolve("./data/data.json"),
-            "utf-8"
-        );
-        users = JSON.parse(users);
+        const users = await readFromFile("./data/data.json");
 
         const index = users.findIndex((user) => user.id === id);
         if (index < 0)
@@ -150,11 +121,7 @@ const deleteUser = async (req, res, next) => {
         const user = users[index];
         users.splice(index, 1);
 
-        await fs.writeFile(
-            path.resolve("./data/data.json"),
-            JSON.stringify(users),
-            "utf-8"
-        );
+        await writeToFile("./data/data.json", users);
 
         return res.status(202).send({
             message: "User Deleted!",
