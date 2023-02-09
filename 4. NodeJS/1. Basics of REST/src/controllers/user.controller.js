@@ -1,9 +1,9 @@
 const fs = require("fs").promises;
 const { log } = require("console");
 const path = require("path");
-const UserSchema = require("../model/user.model");
+const AppError = require("../helper/AppError");
 
-const getAllUser = async (req, res) => {
+const getAllUser = async (req, res, next) => {
     try {
         let users = await fs.readFile(
             path.resolve("./data/data.json"),
@@ -16,13 +16,11 @@ const getAllUser = async (req, res) => {
             body: [...users],
         });
     } catch (err) {
-        return res.status(503).send({
-            message: err.message,
-        });
+        return next(new AppError({ statusCode: 503, message: err.message }));
     }
 };
 
-const getUserById = async (req, res) => {
+const getUserById = async (req, res, next) => {
     try {
         const {
             params: { id },
@@ -36,9 +34,7 @@ const getUserById = async (req, res) => {
 
         const data = users.find((usr) => usr.id === id);
         if (!data) {
-            return res.status(404).send({
-                message: "User not found!",
-            });
+            throw new AppError({ statusCode: 404, message: "User not found!" });
         }
 
         return res.status(200).send({
@@ -46,17 +42,18 @@ const getUserById = async (req, res) => {
             body: { ...data },
         });
     } catch (err) {
-        return res.status(503).send({
-            message: err.message,
-        });
+        next(
+            new AppError({
+                statusCode: err.statusCode || 503,
+                message: err.message,
+            })
+        );
     }
 };
 
-const createUser = async (req, res) => {
+const createUser = async (req, res, next) => {
     try {
         const { body } = req;
-        // Check schema
-        UserSchema.parse(body);
 
         let users = await fs.readFile(
             path.resolve("./data/data.json"),
@@ -64,7 +61,7 @@ const createUser = async (req, res) => {
         );
         users = JSON.parse(users);
 
-        body.id = (users.length + 1).toString();
+        body.id = Date.now().toString();
         users.push(body);
 
         await fs.writeFile(
@@ -79,26 +76,22 @@ const createUser = async (req, res) => {
         });
     } catch (err) {
         log(err);
-        if (err.errors)
-            return res.status(503).send({
-                message: err.flatten().fieldErrors,
-            });
 
-        return res.status(503).send({
-            message: err.message,
-        });
+        next(
+            new AppError({
+                statusCode: err.statusCode || 503,
+                message: err.message,
+            })
+        );
     }
 };
 
-const updateUser = async (req, res) => {
+const updateUser = async (req, res, next) => {
     try {
         const {
             body,
             params: { id },
         } = req;
-
-        // Check schema
-        UserSchema.parse(body);
 
         let users = await fs.readFile(
             path.resolve("./data/data.json"),
@@ -107,7 +100,11 @@ const updateUser = async (req, res) => {
         users = JSON.parse(users);
 
         const index = users.findIndex((user) => user.id === id);
-        if (index < 0) throw new Error((message = "Invalid User ID!"));
+        if (index < 0)
+            throw new AppError({
+                message: "Invalid User ID!",
+                statusCode: 404,
+            });
 
         users[index] = body;
         users[index].id = id;
@@ -125,18 +122,16 @@ const updateUser = async (req, res) => {
     } catch (err) {
         log(err);
 
-        if (err.errors)
-            return res.status(503).send({
-                message: err.flatten().fieldErrors,
-            });
-
-        return res.status(503).send({
-            message: err.message,
-        });
+        next(
+            new AppError({
+                statusCode: err.statusCode || 503,
+                message: err.message,
+            })
+        );
     }
 };
 
-const deleteUser = async (req, res) => {
+const deleteUser = async (req, res, next) => {
     try {
         const {
             params: { id },
@@ -149,7 +144,8 @@ const deleteUser = async (req, res) => {
         users = JSON.parse(users);
 
         const index = users.findIndex((user) => user.id === id);
-        if (index < 0) throw new Error((message = "Invalid User ID!"));
+        if (index < 0)
+            throw new AppError({ statusCode: 404, message: "User not found!" });
 
         const user = users[index];
         users.splice(index, 1);
@@ -165,9 +161,12 @@ const deleteUser = async (req, res) => {
             data: user,
         });
     } catch (err) {
-        return res.status(503).send({
-            message: err.message,
-        });
+        next(
+            new AppError({
+                statusCode: err.statusCode || 503,
+                message: err.message,
+            })
+        );
     }
 };
 
