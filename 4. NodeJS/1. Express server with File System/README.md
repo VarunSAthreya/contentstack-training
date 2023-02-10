@@ -22,6 +22,7 @@ The API should provide CRUD capability. The Readme file will act like the docume
 │   ├── controllers
 │   │   └── user.controller.js
 │   ├── helper
+│   │   ├── fileIO.js
 │   │   └── AppError.js
 │   ├── middleware
 │   │   ├── ErrorHandler.js

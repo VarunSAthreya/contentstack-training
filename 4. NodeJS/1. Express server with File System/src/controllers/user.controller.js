@@ -2,36 +2,51 @@ const { log } = require("console");
 const AppError = require("../helper/AppError");
 const { readFromFile, writeToFile } = require("../helper/fileIO");
 
-const getAllUser = async (req, res, next) => {
+const getAllUser = (req, res, next) => {
     try {
-        const users = await readFromFile("./data/data.json");
-
-        return res.status(200).send({
-            message: "Fetched data successfully.",
-            body: [...users],
-        });
+        readFromFile("./data/data.json")
+            .then((data) => {
+                const users = JSON.parse(data);
+                return res.status(200).send({
+                    message: "Fetched data successfully.",
+                    body: [...users],
+                });
+            })
+            .catch((err) => {
+                log(err);
+                throw err;
+            });
     } catch (err) {
         return next(new AppError({ statusCode: 503, message: err.message }));
     }
 };
 
-const getUserById = async (req, res, next) => {
+const getUserById = (req, res, next) => {
     try {
         const {
             params: { id },
         } = req;
 
-        const users = await readFromFile("./data/data.json");
+        readFromFile("./data/data.json")
+            .then((data) => {
+                const users = JSON.parse(data);
+                const user = users.find((usr) => usr.id === id);
+                if (!data) {
+                    throw new AppError({
+                        statusCode: 404,
+                        message: "User not found!",
+                    });
+                }
 
-        const data = users.find((usr) => usr.id === id);
-        if (!data) {
-            throw new AppError({ statusCode: 404, message: "User not found!" });
-        }
-
-        return res.status(200).send({
-            message: "Fetched data successfully.",
-            body: { ...data },
-        });
+                return res.status(200).send({
+                    message: "Fetched data successfully.",
+                    body: { ...user },
+                });
+            })
+            .catch((err) => {
+                log(err);
+                throw err;
+            });
     } catch (err) {
         next(
             new AppError({
@@ -42,21 +57,32 @@ const getUserById = async (req, res, next) => {
     }
 };
 
-const createUser = async (req, res, next) => {
+const createUser = (req, res, next) => {
     try {
         const { body } = req;
 
-        const users = await readFromFile("./data/data.json");
+        readFromFile("./data/data.json")
+            .then((data) => {
+                const users = JSON.parse(data);
+                body.id = Date.now().toString();
+                users.push(body);
 
-        body.id = Date.now().toString();
-        users.push(body);
-
-        await writeToFile("./data/data.json", users);
-
-        return res.status(201).send({
-            message: "User Created!",
-            data: body,
-        });
+                writeToFile("./data/data.json", users)
+                    .then(() => {
+                        return res.status(201).send({
+                            message: "User Created!",
+                            data: body,
+                        });
+                    })
+                    .catch((err) => {
+                        log(err);
+                        throw err;
+                    });
+            })
+            .catch((err) => {
+                log(err);
+                throw err;
+            });
     } catch (err) {
         log(err);
 
@@ -69,31 +95,42 @@ const createUser = async (req, res, next) => {
     }
 };
 
-const updateUser = async (req, res, next) => {
+const updateUser = (req, res, next) => {
     try {
         const {
             body,
             params: { id },
         } = req;
 
-        const users = await readFromFile("./data/data.json");
+        readFromFile("./data/data.json")
+            .then((data) => {
+                const users = JSON.parse(data);
+                const index = users.findIndex((user) => user.id === id);
+                if (index < 0)
+                    throw new AppError({
+                        message: "Invalid User ID!",
+                        statusCode: 404,
+                    });
 
-        const index = users.findIndex((user) => user.id === id);
-        if (index < 0)
-            throw new AppError({
-                message: "Invalid User ID!",
-                statusCode: 404,
+                users[index] = body;
+                users[index].id = id;
+
+                writeToFile("./data/data.json", users)
+                    .then(() => {
+                        return res.status(202).send({
+                            message: "User updated!",
+                            data: users[index],
+                        });
+                    })
+                    .catch((err) => {
+                        log(err);
+                        throw err;
+                    });
+            })
+            .catch((err) => {
+                log(err);
+                throw err;
             });
-
-        users[index] = body;
-        users[index].id = id;
-
-        await writeToFile("./data/data.json", users);
-
-        return res.status(202).send({
-            message: "User updated!",
-            data: users[index],
-        });
     } catch (err) {
         log(err);
 
@@ -112,21 +149,35 @@ const deleteUser = async (req, res, next) => {
             params: { id },
         } = req;
 
-        const users = await readFromFile("./data/data.json");
+        readFromFile("./data/data.json")
+            .then((data) => {
+                const users = JSON.parse(data);
+                const index = users.findIndex((user) => user.id === id);
+                if (index < 0)
+                    throw new AppError({
+                        statusCode: 404,
+                        message: "User not found!",
+                    });
 
-        const index = users.findIndex((user) => user.id === id);
-        if (index < 0)
-            throw new AppError({ statusCode: 404, message: "User not found!" });
+                const user = users[index];
+                users.splice(index, 1);
 
-        const user = users[index];
-        users.splice(index, 1);
-
-        await writeToFile("./data/data.json", users);
-
-        return res.status(202).send({
-            message: "User Deleted!",
-            data: user,
-        });
+                writeToFile("./data/data.json", users)
+                    .then(() => {
+                        return res.status(202).send({
+                            message: "User Deleted!",
+                            data: user,
+                        });
+                    })
+                    .catch((err) => {
+                        log(err);
+                        throw err;
+                    });
+            })
+            .catch((err) => {
+                log(err);
+                throw err;
+            });
     } catch (err) {
         next(
             new AppError({
